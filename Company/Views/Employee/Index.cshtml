@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_EmployeeOneLayout";
+}
+
+<h1>Employees Data</h1>
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col">Address</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Details</th>
+            
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        @{
+            int i = 1;
+        }
+        @foreach(var emp in Model)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@emp.FirstName</td>
+                <td>@emp.LastName</td>
+                <td>@emp.BirthDate</td>
+                <td>@emp.Address</td>
+                <td>@emp.Sex</td>
+                <td>@emp.Salary</td>
+                <td><a href="/employee/details/@emp.SSN">Details</a></td>
+              
+            </tr>
+        }
+    </tbody>
+</table>
+
+

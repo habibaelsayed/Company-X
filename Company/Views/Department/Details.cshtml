@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    Layout = "_EmployeeOneLayout";
+
+    SelectList freeEmp = new SelectList(ViewBag.Unmanagers, "SSN", "FirstName", "LastName");
+
+}
+@model Department
+
+<h1>Update Department</h1>
+<form asp-action="update" asp-controller="department" class="form-dark">
+    <input asp-for="Dnum" hidden/>
+    <div class="mb-3">
+        <label  asp-for="Dname"></label>
+        <input asp-for="Dname" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="MGRStartDate" class="form-label"></label>
+        <input type="date" class="form-control" asp-for="MGRStartDate">
+    </div>
+    <div class="form-floating">
+        <select class="form-select" asp-items="freeEmp" asp-for="MGRSSN">
+        </select>
+        <label asp-for="MGRSSN" class="form-label">Department Manager</label>
+    </div>
+    <button type="submit" class="btn btn-outline-primary my-3">Submit</button>
+</form>

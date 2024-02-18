@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_EmployeeOneLayout";
+}
+
+<table class="table table-dark table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manager</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">Handle</th>
+           
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        @{
+            int i = 0;
+        }
+        @foreach (Department item in Model)
+        {
+            <tr>
+                <th scope="row">@(++i)</th>
+                <td>@item.Dname</td>
+                <td>@item.Manager.FirstName @item.Manager.LastName</td>
+                <td>@item.MGRStartDate</td>
+                <td><a href="/department/details/@item.Dnum">Edit</a> | <a href="/department/delete/@item.Dnum">Delete</a></td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+<a class="btn btn-dark btn-xl" asp-action="addform" asp-controller="department">Add Department</a>

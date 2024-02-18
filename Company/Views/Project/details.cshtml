@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<form action="/project/update" class="form-dark">
+    <input name="id" hidden value="@Model.Pnum" />
+    <div class="mb-3">
+        <label for="name" class="form-label">Project Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="@Model.PName">
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Project Location</label>
+        <input type="text" class="form-control" id="location" name="location" value="@Model.PLoc">
+    </div>
+    <div class="mb-3">
+        <label for="city" class="form-label">Project City</label>
+        <input type="text" class="form-control" id="city" name="city" value="@Model.City">
+    </div>
+    <div class="form-floating">
+        <select class="form-select" id="deptId" name="deptId">
+            @foreach (Department item in ViewBag.departments)
+            {
+                if (item.Dnum == Model.DeptNum)
+                {
+                    <option value="@item.Dnum" selected>@item.Dname</option>
+                }
+                else
+                {
+                    <option value="@item.Dnum">@item.Dname</option>
+                }
+            }
+        </select>
+        <label for="department" class="form-label">Project Department</label>
+    </div>
+    <button type="submit" class="btn btn-outline-primary my-3">Submit</button>
+</form>

@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_EmployeeOneLayout";
+}
+@model List<Works_for>;
+
+<h1>@Model[0].project.PName</h1>
+<table class="table table-dark table-sm table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Hours</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        @{
+            int i = 0;
+            int totalHours = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(++i)</th>
+                <td>@item.employee.FirstName @item.employee.LastName</td>
+                <td>@item.Hours</td>
+            </tr>
+            totalHours += item.Hours;
+        }
+        <tr>
+            <th scope="row">Total Hours</th>
+            <td colspan="2">@totalHours</td>
+        </tr>
+
+    </tbody>
+</table>
+<a class="btn btn-dark btn-xl" href="/WorksFor/Index">Back To List</a>

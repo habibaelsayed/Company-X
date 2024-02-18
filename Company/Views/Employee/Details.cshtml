@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_EmployeeOneLayout";
+}
+
+<h1>Details</h1>
+
+<div class="card bg-dark text-light container" >
+    <div class="card-body">
+        <h5 class="card-title">@Model.FirstName @Model.LastName</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Address: @Model.Address</h6>
+        <p class="card-text">Salary: <span style="color: green">@Model.Salary</span> $</p>
+        <p class="card-text">Gender: @Model.Sex </p>
+        <p class="card-text">Birth Date: <span style="color: dodgerblue">@Model.BirthDate</span></p>
+    </div>
+</div>
+

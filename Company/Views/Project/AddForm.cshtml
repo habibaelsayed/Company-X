@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form action ="/project/add" class="form-dark">
+    <div class="mb-3">
+        <label for="name" class="form-label">Project Name</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Project Location</label>
+        <input type="text" class="form-control" id="location" name="location">
+    </div>
+    <div class="mb-3">
+        <label for="city" class="form-label">Project City</label>
+        <input type="text" class="form-control" id="city" name="city">
+    </div>
+    <div class="form-floating">
+        <select class="form-select" id="deptId" name= "deptId">
+            @foreach(Department item in Model)
+            {
+                <option value="@item.Dnum">@item.Dname</option>
+            }
+        </select>
+        <label for="department" class="form-label">Project Department</label>
+    </div>
+    <button type="submit" class="btn btn-outline-primary my-3">Submit</button>
+</form>
