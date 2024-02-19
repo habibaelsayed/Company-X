@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    SelectList projects = new SelectList(Model, "Pnum", "PName");
+}
+
+@* _EmployeeProjectsPartial *@
+
+@model List<Project>
+<div id="projs" class="form-floating mb-3">
+    <select asp-items="@projects" class="form-select my-3" id="project" onchange="DisplayHours()">
+        <option value="0"></option>
+    </select>
+    <label class="form-label" for="floatingInput">Projects</label>
+</div>
+
+
+<partial name="_ProjectsHoursPartial" model="ViewBag.Hours"/>
+

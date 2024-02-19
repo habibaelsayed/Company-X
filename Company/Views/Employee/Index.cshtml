@@ -1,10 +1,10 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "_EmployeeOneLayout";
 }
+@model List<Employee>
 
-<h1>Employees Data</h1>
+<h1 class="display-5">Employees Data</h1>
 
 <table class="table table-hover table-dark">
     <thead>
@@ -15,6 +15,7 @@
             <th scope="col">Birth Date</th>
             <th scope="col">Address</th>
             <th scope="col">Sex</th>
+            <th scope="col">Department</th>
             <th scope="col">Salary</th>
             <th scope="col">Details</th>
             
@@ -33,6 +34,7 @@
                 <td>@emp.BirthDate</td>
                 <td>@emp.Address</td>
                 <td>@emp.Sex</td>
+                <td>@emp.EmpDept?.Dname</td>
                 <td>@emp.Salary</td>
                 <td><a href="/employee/details/@emp.SSN">Details</a></td>
               
@@ -40,5 +42,7 @@
         }
     </tbody>
 </table>
+<a class="btn btn-dark btn-xl" href="/Employee/Add">Add Employee</a>
+<a class="btn btn-dark btn-xl" href="/Employee/AddEmpToProj">Add Employee to Project</a>
 
 

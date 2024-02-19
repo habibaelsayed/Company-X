@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    SelectList employees = new SelectList(ViewBag.Employees, "SSN", "FirstName");
+    SelectList projects = new SelectList(ViewBag.Projects, "Pnum", "PName");
+}
+
+<form asp-action="addprojects" asp-controller="employee" method="post">
+    <select asp-items="employees" name="empid" class="form-select my-3" aria-label="Select Employee">
+    
+    </select>
+    <select asp-items="projects" name="projectsid" class="form-select my-3" multiple aria-label="Multiple select Projects">
+    </select>
+
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" name="hours" id="floatingInput">
+        <label for="floatingInput" name="hours">Working Hours</label>
+    </div>
+    <button class="btn btn-dark btn-xl" type="submit" value="Add">Add projects</button>
+</form>

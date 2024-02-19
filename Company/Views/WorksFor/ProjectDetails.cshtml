@@ -2,11 +2,10 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = "_EmployeeOneLayout";
 }
 @model List<Works_for>;
 
-<h1>@Model[0].project.PName</h1>
+<h1 class="display-5">(@Model[0].project.PName) Project Details</h1>
 <table class="table table-dark table-sm table-hover">
     <thead>
         <tr>

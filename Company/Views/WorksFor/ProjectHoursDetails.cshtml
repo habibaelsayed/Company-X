@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    SelectList employees = new SelectList(ViewBag.Employees, "SSN", "FirstName");
+    
+}
+<div class="form-floating mb-3">
+
+    <select asp-items="employees" class="form-select my-3" id="empsel" onchange="DisplayProjects()">
+        <option value="0"></option>
+    </select>
+    <label class="form-label" for="floatingInput">Employee Name</label>
+</div>
+
+<partial name="_EmployeeProjectsPartial" model="ViewBag.Projects"/>
+
+
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/displaydata.js"></script>
+
+}

@@ -9,26 +9,6 @@ namespace Company.Controllers
         public CompanyContext CompanyContext = new CompanyContext();
         public IActionResult Index()
         {
-            //var EmployeeProjectsGroups = CompanyContext.works_For.Include(wf => wf.employee).Include(wf => wf.project).GroupBy(wf => wf.EmpSSN).ToList();
-
-            //List<object> EmployeeProjects = new List<object>();
-
-            //foreach (var group in EmployeeProjectsGroups)
-            //{
-            //    EmployeeProjects.Add(new { employee = group.Select(g => g.employee), project = group.Select(g => g.project), hours = group.Select(g => g.Hours) });
-            //}
-
-
-
-            //foreach (var item in EmployeeProjects)
-            //{
-            //    var employee = item.GetType().GetProperty("employee").GetValue(item, null);
-            //    var projects = (List<Project>)item.GetType().GetProperty("project").GetValue(item, null);
-            //    var hours = (List<int>)item.GetType().GetProperty("hours").GetValue(item, null);
-
-
-
-            //}
 
             if (HttpContext.Session.GetInt32("id") != null)
             {
@@ -76,5 +56,36 @@ namespace Company.Controllers
 
             return View(employees);
         }
+
+
+        public IActionResult ProjectHoursDetails()
+        {
+
+            List<Employee> employees = CompanyContext.Employees.ToList();
+            ViewBag.Employees = employees;
+
+            List<Project> projects = CompanyContext.Projects.ToList();
+            ViewBag.Projects = projects;
+
+            //List<Works_for> works = CompanyContext.works_For.Include(wf=> wf.employee).Include(wf=>wf.project).ToList();
+ 
+
+            return View();
+        }
+
+        public IActionResult GetProjects(int id)
+        {
+            List<Project> projects = CompanyContext.works_For.Where(wf => wf.EmpSSN == id).Select(wf => wf.project).ToList();
+
+            return PartialView("_EmployeeProjectsPartial", projects);
+        }
+
+        public IActionResult GetHours(int projId, int empId)
+        {
+            var worksFor = CompanyContext.works_For.FirstOrDefault(wf => wf.Pnum == projId && wf.EmpSSN == empId);
+            int hours = worksFor.Hours;
+            return PartialView("_ProjectsHoursPartial", hours);
+        }
     }
 }
+
